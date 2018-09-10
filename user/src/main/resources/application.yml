@@ -1,0 +1,46 @@
+server:
+  port: 8083
+  servlet:
+    session:
+      tracking-modes: COOKIE
+management:
+  security:
+    enabled: false
+spring:
+  freemarker:
+    charset: UTF-8
+    content-type: text/html
+    suffix: .ftl
+    template-loader-path: classpath:/templates
+    cache: false
+    allow-request-override: true
+    allow-session-override: true
+    check-template-location: true
+  datasource:
+    username: root
+    password: Wwe~6895238
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.25.91.78:3306/cloud?characterEncoding=utf8&useSSL=false
+    hikari:
+      validation-timeout: 3000
+      connection-timeout: 60000
+      idle-timeout: 60000
+      max-lifetime: 60000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+cas:
+  server:
+    host:
+      url: http://127.0.0.1:8080/cas
+      login: ${cas.server.host.url}/login
+      logout: ${cas.server.host.url}/logout?service=${app.server.host.url}/user/index
+app:
+  server:
+    name: user-server
+    login: /login
+    logout: /logout
+    host:
+      url: http://127.0.0.1:8083
